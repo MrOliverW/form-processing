@@ -97,7 +97,7 @@
   </div>
     <footer>
       <p><small>&copy; 2021-<span id="this-year"></span> by 
-          YOUR NAME HERE, All Rights Reserved ~ 
+          Oliver Warlick, All Rights Reserved ~ 
           <a id="html-checker" href="#" target="_blank">Check HTML</a> ~ 
           <a id="css-checker" href="#" target="_blank">Check CSS</a></small>
      </p>
@@ -105,6 +105,16 @@
   </main>
   <script src="js/main.js"></script> 
   <script>
+
+function titleCase(str){
+    str = str.split(" ");
+    for(let x = 0; x<str.length; x++){
+        str[x] = str[x].charAt(0).toUpperCase() + str[x].slice(1).toLowerCase();
+    }
+
+    str = str.join(" ");
+    return str;
+}
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -115,6 +125,23 @@
       urlParams.forEach(function(value,key){
 
         key = key.split("_").join(" ");
+        
+        switch(key){
+          case "First Name":
+          case "Last Name":
+          case "City":
+          case "Address":
+           value = titleCase(value);
+
+          break;
+
+        }
+
+
+
+        //title case everything?
+        value = titleCase(value);
+
         myOutput += `<p>${key}: ${value}</p>`;
       });
       myOutput += `<p><a href="index.html">CLEAR</a></p>`; 
